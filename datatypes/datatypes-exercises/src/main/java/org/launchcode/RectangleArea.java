@@ -2,7 +2,7 @@ package org.launchcode;
 
 import java.util.Scanner;
 
-public class NumericTypes {
+public class RectangleArea {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("I will calculate the area of a rectangle.\nWhat is the length of the rectangle? (Whole numbers and decimal numbers only.)");
