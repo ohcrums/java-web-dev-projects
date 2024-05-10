@@ -19,7 +19,7 @@ public class Menu {
         for (MenuItem item : items) {
             loopItems.append(item.toString());
         }
-         return String.format("***%nCool Restaurant Menu %nLast Updated on %s %nOur dishes include: %n%s***",this.lastUpdated, loopItems.toString());
+         return String.format("***%nCool Restaurant Menu %nLast Updated on %s %nOur dishes include: %n%s***",this.lastUpdated, loopItems);
     }
 
     @Override
