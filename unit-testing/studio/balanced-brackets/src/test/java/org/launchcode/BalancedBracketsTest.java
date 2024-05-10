@@ -33,6 +33,11 @@ class BalancedBracketsTest {
     }
 
     @Test
+    public void whiteSpaceReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("    "));
+    }
+
+    @Test
     public void leftBracketReturnsFalse() {
         assertFalse(BalancedBrackets.hasBalancedBrackets("[LaunchCode"));
     }
