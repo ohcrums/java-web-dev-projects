@@ -1,5 +1,7 @@
 package org.launchcode;
 
+import java.util.Objects;
+
 public class Student {
 
     private static int nextStudentId = 1;
@@ -28,22 +30,58 @@ public class Student {
         return (this.name + " has a GPA of: " + this.gpa);
     }
 
-
     //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+    public String getGradeLevel(int credits) {
+        // Determine the grade level of the student based on numberOfCredits
+        if (credits <= 29){
+            return "freshman";
+        } else if (credits <= 59){
+            return "sophomore";
+        } else if (credits <= 89) {
+            return "junior";
+        } else {
+            return "senior";
+        }
+    }
 
     // TODO: Complete the addGrade method.
-    public void addGrade(int courseCredits, double grade) {
+    public IllegalArgumentException addGrade(int courseCredits, double grade) {
         // Update the appropriate fields: numberOfCredits, gpa
+
+        if (grade >= 0 && grade <= 4) {
+            double totalQualityScore = this.gpa * this.numberOfCredits;
+            totalQualityScore += courseCredits * grade;
+            this.numberOfCredits += courseCredits;
+            this.gpa = totalQualityScore/this.numberOfCredits;
+        } else {
+             return new IllegalArgumentException("Grade must be between 0 and 4");
+        }
+        // grade = 0.0-4.0. with this data, update gpa
+        // gpa = (total quality score) / (total number of credits)
+        return null;
     }
 
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
+    @Override
+    public String toString() {
+        return String.format("%s is a %s with %d credits and a GPA of %.2f", this.name, this.getGradeLevel(this.numberOfCredits), this.getNumberOfCredits(), this.getGpa());
+    }
 
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentId == student.studentId && numberOfCredits == student.numberOfCredits && Double.compare(gpa, student.gpa) == 0 && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, studentId, numberOfCredits, gpa);
+    }
 
     public String getName() {
         return name;
@@ -85,5 +123,10 @@ public class Student {
         System.out.println(sally);
         sally.addGrade(25, 3.8);
         System.out.println(sally);
+        // test grade argument out of expected range
+        sally.addGrade(25, 4.1);
+        System.out.println(sally.addGrade(25, 4.1));
+        System.out.println(sally);
+
     }
 }
