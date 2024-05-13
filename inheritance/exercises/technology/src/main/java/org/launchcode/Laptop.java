@@ -1,13 +1,12 @@
 package org.launchcode;
 
 public class Laptop extends Computer {
-    private boolean isCheap;
+    private final boolean isCheap;
 
-    public Laptop(Double ageInYears, Double warrantyLength, boolean damageCoverage, boolean isCheap) {
-        super(ageInYears, warrantyLength, damageCoverage);
+    public Laptop(String unitName, Double ageInYears, Double warrantyLength, boolean damageCoverage, boolean isCheap) {
+        super(unitName, ageInYears, warrantyLength, damageCoverage);
         this.isCheap = isCheap;
     }
-
 
     public void spillWater(){
         // call to warrantyCheck method

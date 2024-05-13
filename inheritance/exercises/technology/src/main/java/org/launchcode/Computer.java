@@ -1,15 +1,26 @@
 package org.launchcode;
 
-public class Computer {
+public class Computer extends AbstractEntity {
+    private String unitName;
     private Double ageInYears;
     private Double warrantyLength;
     private boolean warrantyStatus = true;
     private boolean damageCoverage;
 
-    public Computer(Double ageInYears, Double warrantyLength, boolean damageCoverage) {
+    public Computer(String unitName, Double ageInYears, Double warrantyLength, boolean damageCoverage) {
         this.ageInYears = ageInYears;
         this.warrantyLength = warrantyLength;
         this.damageCoverage = damageCoverage;
+        this.unitName = unitName;
+        registerId(unitName);
+    }
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
     }
 
     public Double getAgeInYears() {
