@@ -1,8 +1,23 @@
 package org.launchcode;
 
-public class CD {
-    // TODO: Implement your custom interface.
+public class CD extends BasicDisc implements OpticalDisc {
 
-    // TODO: Determine which fields, methods, and constructors can be extended from the base class and which ones
-    //  need to be declared separately.
+    public CD(String name, int maxCapacity, String diskType, String contents, int usedCapacity) {
+        super(name, maxCapacity, diskType, contents, usedCapacity);
+    }
+
+    @Override
+    public void spinDisc() {
+        System.out.println("A CD spins at a rate of 200 - 500 rpm.");
+    }
+
+    @Override
+    public void readData() {
+        if (this.getContents().equalsIgnoreCase("music")) {
+            System.out.println("You bump some sweet jams.");
+        } else if (this.getContents().equalsIgnoreCase("pictures")) {
+            System.out.println("You reminisce on good memories");
+        }
+    }
+
 }
