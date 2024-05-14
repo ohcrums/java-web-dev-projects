@@ -10,7 +10,7 @@ public class TrueFalse extends Question {
 
     @Override
     public void showOptions() {
-        System.out.println("Answer 'true' or 'false':");
+        System.out.println("Is the above statement 'true' or 'false':");
     }
 
     @Override
