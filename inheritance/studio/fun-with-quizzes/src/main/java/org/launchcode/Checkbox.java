@@ -8,6 +8,7 @@ public class Checkbox extends Question{
         this.correctOptions = correctOptions;
     }
 
+    // TODO: i don't like how i designed Checkbox.checkAnswer. Would be better if user can just enter the numbers of the options they choose, then checkAnswer parses as appropriate.
     @Override
     public boolean checkAnswer(String response) {
         String[] responseStringArr = response.split(" ");
