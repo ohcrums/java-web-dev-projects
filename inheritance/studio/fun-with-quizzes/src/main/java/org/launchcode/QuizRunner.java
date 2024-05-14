@@ -4,11 +4,21 @@ public class QuizRunner {
     public static void main(String[] args){
 
         // TODO: call Quiz methods to run the test
-        MultipleChoice testQuestion = new MultipleChoice ("i am a question", new String[]{"correct answer", "incorrect"}, 0);
+        MultipleChoice testMultiple = new MultipleChoice ("i am a question", new String[]{"correct answer", "incorrect"}, 0);
+        Checkbox testCheckbox = new Checkbox("i am a question", new String[]{"trueQ, falseQ"}, new boolean[]{true, false});
 
-        testQuestion.showQuestion();
-        testQuestion.showOptions();
-        System.out.println(testQuestion.checkAnswer("1"));
+        System.out.println("MultipleChoice Test\n***");
+        testMultiple.showQuestion();
+        testMultiple.showOptions();
+        System.out.println(testMultiple.checkAnswer("1"));
+
+        System.out.println("Checkbox Test\n***");
+        testCheckbox.showQuestion();
+        testCheckbox.showOptions();
+        System.out.println(testCheckbox.checkAnswer("false true"));
+        System.out.println(testCheckbox.checkAnswer("true false"));
+        System.out.println(testCheckbox.checkAnswer("true    false"));
+        System.out.println(testCheckbox.checkAnswer(" true false"));
 
 
         // TODO: create questions
