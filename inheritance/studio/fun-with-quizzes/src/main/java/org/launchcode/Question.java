@@ -2,10 +2,12 @@ package org.launchcode;
 
 public abstract class Question {
     private String questionText;
+    private String[] options;
 
     // constructor
-    public Question(String questionText){
+    public Question(String questionText, String[] options) {
         this.questionText = questionText;
+        this.options = options;
     }
 
     // setters and getters
@@ -23,9 +25,15 @@ public abstract class Question {
         System.out.println(getQuestionText());
     }
 
-    // abstract methods
-    public abstract void showOptions();
-    public abstract boolean checkAnswer(String answer);
+    public void showOptions() {
+        // prints options as a numbered list, expect int as response
+        for (int i =0; i < options.length; i++) {
+            System.out.println((i + 1) + ": " + options[i]);
+        }
+    }
+
+    // abstract method
+    public abstract boolean checkAnswer(String response);
 
 
 }
