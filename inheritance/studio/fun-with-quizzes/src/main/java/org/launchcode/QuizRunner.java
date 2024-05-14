@@ -1,42 +1,27 @@
 package org.launchcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuizRunner {
     public static void main(String[] args){
 
-        // TODO: call Quiz methods to run the test
-        MultipleChoice testMultiple = new MultipleChoice ("i am a question", new String[]{"correct answer", "incorrect"}, 0);
-        Checkbox testCheckbox = new Checkbox("i am a question", new String[]{"trueQ, falseQ"}, new boolean[]{true, false});
-        TrueFalse testTrueFalse = new TrueFalse("i am a question", true);
+        MultipleChoice multipleChoiceQ = new MultipleChoice("In what year did 'The Battle of Hastings Bridge' take place?", new String[]{"1944", "1666", "1815", "1066"}, 3);
+        Checkbox checkboxQ = new Checkbox("Which of these are CPU architecture?", new String[]{"x86", "DDR4", "ARM64", "RJ45"}, new boolean[]{true, false, true, false});
+        TrueFalse trueFalseQ = new TrueFalse("TypeScript is dynamically typed.", false);
 
-        System.out.println("MultipleChoice Test\n***");
-        testMultiple.showQuestion();
-        testMultiple.showOptions();
-        System.out.println(testMultiple.checkAnswer("1"));
+        List<Question> theQuestions = new ArrayList<>();
+        Quiz quiz = new Quiz(theQuestions);
+        // could have added directly to List, but demonstrating Quiz addQuestion method
+        quiz.addQuestion(multipleChoiceQ);
+        quiz.addQuestion(checkboxQ);
+        quiz.addQuestion(trueFalseQ);
 
-        System.out.println("Checkbox Test\n***");
-        testCheckbox.showQuestion();
-        testCheckbox.showOptions();
-        System.out.println(testCheckbox.checkAnswer("false true"));
-        System.out.println(testCheckbox.checkAnswer("true false"));
-        System.out.println(testCheckbox.checkAnswer("true    false"));
-        System.out.println(testCheckbox.checkAnswer(" true false"));
-
-        System.out.println("TrueFalse Test\n***");
-        testTrueFalse.showQuestion();
-        testTrueFalse.showOptions();
-        System.out.println(testTrueFalse.checkAnswer("true"));
-        System.out.println(testTrueFalse.checkAnswer("false"));
-        System.out.println(testTrueFalse.checkAnswer(" true "));
-        System.out.println(testTrueFalse.checkAnswer("True "));
-        System.out.println(testTrueFalse.checkAnswer("Trued "));
-
-        // TODO: create questions
-
-        // TODO: present questions to the user
-
-        // TODO: accept and store user responses
-
-        // TODO: grade test and print results
-
+        // run the quiz and store the returned array of individual question results
+        boolean[] userResponses = quiz.runQuiz();
+        // call quiz grader and store total correct answers as an int variable
+        int totalCorrect = quiz.gradeQuiz(userResponses);
+        // print results
+        System.out.println("\n***\nResults:\nOf " + theQuestions.size() + " total questions, you answered " + totalCorrect + " correctly.\nThanks for playing JankQuiz!\n***");
     }
 }
