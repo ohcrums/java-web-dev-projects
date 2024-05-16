@@ -7,12 +7,17 @@ public class Temperature {
         return fahrenheit;
     }
 
-    public void setFahrenheit(double aFahrenheit) {
+    public void setFahrenheit(double aFahrenheit) throws Exception {
 
         double absoluteZeroFahrenheit = -459.67;
 
         if (aFahrenheit < absoluteZeroFahrenheit) {
-            System.out.println("Value is below absolute zero");
+            try {
+                throw new TemperatureException("Value is below absolute zero");
+            } catch (TemperatureException e) {
+                e.printStackTrace();
+            }
+            return;
         }
 
         fahrenheit = aFahrenheit;
