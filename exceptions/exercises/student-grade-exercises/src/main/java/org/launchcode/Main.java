@@ -47,7 +47,7 @@ public class Main {
             }
             return -1;
         }
-        return (double) x / y;
+        return x / y;
     }
 
     public static int CheckFileExtension(String fileName)
