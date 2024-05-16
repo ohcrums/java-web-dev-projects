@@ -7,7 +7,7 @@ public class Temperature {
         return fahrenheit;
     }
 
-    public void setFahrenheit(double aFahrenheit) throws Exception {
+    public void setFahrenheit(double aFahrenheit) {
 
         double absoluteZeroFahrenheit = -459.67;
 
